@@ -134,7 +134,7 @@ Vagrant.configure("2") do |config|
       end
 
       if $share_home
-        config.vm.synced_folder ENV['HOME'], ENV['HOME'], id: "home", :nfs => true, :mount_options => ['nolock,vers=3,udp']
+        config.vm.synced_folder ENV['HOME'], ENV['HOME'], id: "home", :nfs => true, :mount_options => ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=1']
       end
 
       if File.exist?(CLOUD_CONFIG_PATH)
